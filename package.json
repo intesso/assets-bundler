@@ -7,7 +7,8 @@
     "assets-bundler": "./index.js"
   },
   "scripts": {
-    "test": "cd test && node test.js"
+    "test": "cd test && node test.js",
+    "assets": "assets-bundler --src $(pwd)/node_modules/:module/public --dest $(pwd)/public/assets/:module"
   },
   "keywords": [
     "public",

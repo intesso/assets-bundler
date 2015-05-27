@@ -10,10 +10,12 @@ if (!module.parent) {
     .version(require('./package.json').version)
     .option('-s, --src [value]', 'source path')
     .option('-d, --dest [value]', 'destination path')
-
     .parse(process.argv);
 
-  return command.sync(program.opts());
+  var opts = program.opts();
+  opts.parent = 'cmd';
+
+  return command.sync(opts);
 }
 
 // api

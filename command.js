@@ -1,12 +1,19 @@
 #!/usr/bin/env node
 
+/*
+ * module dependencies
+ */
 var defaults = require('defaults');
 var path = require('path');
 var link = require('glob-ln');
 var copy = require('glob-cp');
-var error = require('debug')('glint-static:error');
+var debug = require('debug')('glint-static:debug');
 var pathIsAbsolute = require('path-is-absolute');
 
+
+/*
+ * api functions
+ */
 // async
 module.exports = function(opts, callback) {
   if (typeof opts == 'function') callback = opts, opts = {};
@@ -22,7 +29,7 @@ module.exports = function(opts, callback) {
     // create links during development
     link(opts.src, opts.dest, opts, callback);
   }
-}
+};
 
 //sync
 module.exports.sync = function(opts) {
@@ -38,27 +45,34 @@ module.exports.sync = function(opts) {
     // create links during development
     link.sync(opts.src, opts.dest, opts);
   }
-}
+};
 
-
+/*
+ * private helper functions
+ */
 function setOptions(opts) {
   opts = opts || {};
   return defaults(opts, {
-    src: path.resolve(__dirname + '/../../node_modules/:module/public'),
-    dest: path.resolve(__dirname + '/../../public/:module'),
+    src: 'node_modules/:module/public',
+    dest: 'public/:module',
     recursive: true
   });
 }
 
 function fixPaths(opts) {
-  opts.src = getAbsolutePath(opts.src);
-  opts.dest = getAbsolutePath(opts.dest);
+  opts.src = getAbsolutePath(opts.src, 'src');
+  opts.dest = getAbsolutePath(opts.dest, 'dest');
+
+  function getAbsolutePath(p, description) {
+    if (pathIsAbsolute(p)) {
+      return p;
+    }
+
+    var absolute = path.resolve(process.cwd() + '/' + p);
+    debug('no absolute path provided, ' + description + ' set to: ' + absolute);
+    return absolute;
+  }
+
 }
 
-function getAbsolutePath(p) {
-  if (pathIsAbsolute(p)) {
-    return p;
-  }
-  error('no absolute path:', p);
-  return path.resolve(__dirname + '/../../' + p);
-}
+
