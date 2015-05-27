@@ -1,6 +1,6 @@
 {
   "name": "assets-bundler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "bundles your modules assets into application assets.",
   "main": "index.js",
   "bin": {
