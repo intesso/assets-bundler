@@ -3,6 +3,9 @@
   "version": "1.0.2",
   "description": "bundles your modules assets into application assets.",
   "main": "index.js",
+  "bin": {
+    "assets-bundler": "./index.js"
+  },
   "scripts": {
     "test": "cd test && node test.js"
   },
