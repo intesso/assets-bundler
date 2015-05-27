@@ -2,9 +2,9 @@
 
 bundles your modules assets into application assets.
 
-## for development, symbolic links are created
+ > for development, symbolic links are created
 
-## for production, the public folders of the modules are copied.
+ > for production, the public folders of the modules are copied.
 
 # install
 ```bash
@@ -16,13 +16,9 @@ npm install assets-bundler -g
 ```js
 var bundle = require('assets-bundler');
 
-
-var src = __dirname + '/node_modules/:module/public';
-var dest = __dirname + '/public/:module';
-
 var opts = {
-src: src,
-dest: dest
+    src: __dirname + '/node_modules/:module/public',
+    dest: __dirname + '/public/:module'
 };
 
 bundle(opts, function(err) {
@@ -30,7 +26,6 @@ bundle(opts, function(err) {
 });
 
 ```
-
 
 # license
 MIT
