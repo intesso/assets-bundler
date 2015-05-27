@@ -2,9 +2,14 @@
 
 bundles your modules assets into application assets.
 
+# features
+
  > for development, symbolic links are created
 
  > for production, the public folders of the modules are copied.
+
+  > you can use the whole [glob](https://github.com/isaacs/node-glob) syntax in the `src` and `dest` pattern, as well as the [glob-var](https://github.com/intesso/glob-var) variables starting with a colon `:`
+
 
 # install
 ```bash
@@ -26,6 +31,9 @@ bundle(opts, function(err) {
 });
 
 ```
+ >  `src` and `dest` can be absolute or relative paths.
+
+ > when you don't provide absolute paths for `src` or `dest`, absolute paths are created from the current working directory of the process using `process.cwd()`.
 
 # license
 MIT
