@@ -1,0 +1,35 @@
+{
+  "name": "assets-bundler",
+  "version": "1.0.0",
+  "description": "bundles your modules assets into application assets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && node test.js"
+  },
+  "keywords": [
+    "public",
+    "copy",
+    "link",
+    "assets",
+    "static assets",
+    "static files",
+    "public files",
+    "public folders",
+    "link assets",
+    "copy assets"
+  ],
+  "author": "Andi Neck",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "debug": "^2.2.0",
+    "defaults": "^1.0.2",
+    "glob-cp": "^1.0.2",
+    "glob-ln": "^1.0.3",
+    "path-is-absolute": "^1.0.0"
+  },
+  "devDependencies": {
+    "rimraf": "^2.3.4",
+    "tape": "^4.0.0"
+  }
+}
