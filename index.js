@@ -1,4 +1,6 @@
-var command = require('./command');;
+#!/usr/bin/env node
+
+var command = require('./command');
 
 // command line execution
 if (!module.parent) {

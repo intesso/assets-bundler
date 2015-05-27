@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var defaults = require('defaults');
 var path = require('path');
 var link = require('glob-ln');
