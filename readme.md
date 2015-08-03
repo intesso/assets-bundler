@@ -19,7 +19,7 @@ npm install assets-bundler -g
 
 # use
 
-> you can either use `assets-bundler` programmatically:
+> you can either use `assets-bundler` programmatically or via command-line:
 
 ## node.js
 ```js
@@ -34,8 +34,6 @@ bundle(opts, function(err) {
   // all done
 });
 ```
-
-> or via command line
 
 ## command line
 
