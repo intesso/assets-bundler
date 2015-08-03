@@ -6,10 +6,9 @@ bundles your modules assets into application assets.
 
  - you can use the whole [glob](https://github.com/isaacs/node-glob) syntax in the `src` and `dest` pattern, as well as the [glob-var](https://github.com/intesso/glob-var) variables starting with a colon `:`
 
- - for development, symbolic links are created
+ - for development, symbolic links are created, using [glob-ln](https://github.com/intesso/glob-ln)
 
- - for production, the public folders of the modules are copied.
-
+ - for production, the public folders of the modules are copied, using [glob-cp](https://github.com/intesso/glob-cp)
 
 
 # install
@@ -30,9 +29,15 @@ var opts = {
     dest: __dirname + '/public/:module'
 };
 
+// async version
 bundle(opts, function(err) {
   // all done
 });
+
+// or with the sync version
+bundle.sync(opts);
+// all done
+
 ```
 
 ## command line
