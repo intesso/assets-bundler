@@ -35,12 +35,13 @@ bundle(opts, function(err) {
 });
 ```
 
+> or via command line
+
 ## command line
 
 ```bash
 assets-bundler --src node_modules/:module/public --dest public/assets/:module
 ```
-
 
 ## options
  -  `src` and `dest` can be absolute or relative paths.
