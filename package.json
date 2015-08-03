@@ -1,6 +1,6 @@
 {
   "name": "assets-bundler",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "bundles your modules assets into application assets.",
   "main": "index.js",
   "bin": {
@@ -22,6 +22,10 @@
     "link assets",
     "copy assets"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intesso/assets-bundler.git"
+  },
   "author": "Andi Neck",
   "license": "MIT",
   "dependencies": {

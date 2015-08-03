@@ -19,6 +19,9 @@ npm install assets-bundler -g
 
 # use
 
+> you can either use `assets-bundler` programmatically:
+
+## node.js
 ```js
 var bundle = require('assets-bundler');
 
@@ -30,11 +33,25 @@ var opts = {
 bundle(opts, function(err) {
   // all done
 });
-
 ```
+
+## command line
+
+```bash
+assets-bundler --src node_modules/:module/public --dest public/assets/:module
+```
+
+
+## options
  -  `src` and `dest` can be absolute or relative paths.
 
  - when you don't provide absolute paths for `src` or `dest`, absolute paths are created from the current working directory of the process using `process.cwd()`.
+
+
+# test
+```bash
+npm test
+```
 
 # license
 MIT
