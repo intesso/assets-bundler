@@ -7,7 +7,7 @@ var defaults = require('defaults');
 var path = require('path');
 var link = require('glob-ln');
 var copy = require('glob-cp');
-var debug = require('debug')('glint-static:debug');
+var debug = require('debug')('assets-bundler:debug');
 var pathIsAbsolute = require('path-is-absolute');
 
 
