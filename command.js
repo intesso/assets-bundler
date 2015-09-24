@@ -10,6 +10,10 @@ var copy = require('glob-cp');
 var debug = require('debug')('assets-bundler:debug');
 var pathIsAbsolute = require('path-is-absolute');
 
+/*
+ * default variables
+ */
+var defaultEnv = 'production';
 
 /*
  * api functions
@@ -21,7 +25,7 @@ module.exports = function(opts, callback) {
   fixPaths(opts);
 
   // handle static files and folders
-  var env = opts.env || process.env.NODE_ENV || 'development';
+  var env = opts.env || process.env.NODE_ENV || defaultEnv;
   if (env === 'production') {
     // create copies in production
     copy(opts.src, opts.dest, opts, callback);
@@ -37,7 +41,7 @@ module.exports.sync = function(opts) {
   fixPaths(opts);
 
   // handle static files and folders
-  var env = opts.env || process.env.NODE_ENV || 'development';
+  var env = opts.env || process.env.NODE_ENV || defaultEnv;
   if (env === 'production') {
     // create copies in production
     copy.sync(opts.src, opts.dest, opts);

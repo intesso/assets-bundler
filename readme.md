@@ -1,6 +1,6 @@
 # assets-bundler
 
-bundles your modules assets into application assets.
+bundles your assets. creates symbolic links for development and copies for production.
 
 # features
 
@@ -47,15 +47,27 @@ assets-bundler --src node_modules/:module/public --dest public/assets/:module
 ```
 
 ## options
- -  `src` and `dest` can be absolute or relative paths.
 
- - when you don't provide absolute paths for `src` or `dest`, absolute paths are created from the current working directory of the process using `process.cwd()`.
+### src
+- The source path. It can be relative or absolute.
+- When you don't provide an absolute path, an absolute path is created from the current working directory of the process using `process.cwd()`.
 
+### dest
+- The destination path. It can be relative or absolute.
+- When you don't provide an absolute path, an absolute path is created from the current working directory of the process using `process.cwd()`.
+
+### env
+- you can either set the `env` option or the environment variable `NODE_ENV`
+- values: `production`, `development`
+- default: `production`
 
 # test
 ```bash
 npm test
 ```
+
+# author
+Andi Neck | [@andineck](https://twitter.com/andineck)
 
 # license
 MIT
