@@ -10,6 +10,7 @@ if (!module.parent) {
     .version(require('./package.json').version)
     .option('-s, --src [value]', 'source path')
     .option('-d, --dest [value]', 'destination path')
+    .option('-e, --env [value]', 'environment: "production" or "development"')
     .parse(process.argv);
 
   var opts = program.opts();
