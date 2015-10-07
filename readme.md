@@ -48,6 +48,23 @@ assets-bundler --src node_modules/:module/public --dest public/assets/:module
 
 ## options
 
+```sh
+assets-bundler --help
+
+  Usage: assets-bundler [options]
+
+  Options:
+
+    -h, --help               output usage information
+    -V, --version            output the version number
+    -s, --src [value]        source path
+    -d, --dest [value]       destination path
+    -e, --env [value]        environment: "production" or "development", default: "production"
+    -f, --force [value]      remove destination before operation, default: "true"
+    -r, --recursive [value]  recursive copy, default: "true"
+
+```
+
 ### src
 - The source path. It can be relative or absolute.
 - When you don't provide an absolute path, an absolute path is created from the current working directory of the process using `process.cwd()`.
@@ -58,8 +75,7 @@ assets-bundler --src node_modules/:module/public --dest public/assets/:module
 
 ### env
 - you can either set the `env` option or the environment variable `NODE_ENV`
-- values: `production`, `development`
-- default: `production`
+
 
 # test
 ```bash
@@ -71,5 +87,3 @@ Andi Neck | [@andineck](https://twitter.com/andineck)
 
 # license
 MIT
-
-

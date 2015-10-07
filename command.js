@@ -25,8 +25,7 @@ module.exports = function(opts, callback) {
   fixPaths(opts);
 
   // handle static files and folders
-  var env = opts.env || process.env.NODE_ENV || defaultEnv;
-  if (env === 'production') {
+  if (opts.env === 'production') {
     // create copies in production
     copy(opts.src, opts.dest, opts, callback);
   } else {
@@ -41,8 +40,7 @@ module.exports.sync = function(opts) {
   fixPaths(opts);
 
   // handle static files and folders
-  var env = opts.env || process.env.NODE_ENV || defaultEnv;
-  if (env === 'production') {
+  if (opts.env === 'production') {
     // create copies in production
     copy.sync(opts.src, opts.dest, opts);
   } else {
@@ -55,11 +53,12 @@ module.exports.sync = function(opts) {
  * private helper functions
  */
 function setOptions(opts) {
-  opts = opts || {};
   return defaults(opts, {
     src: 'node_modules/:module/public',
     dest: 'public/:module',
-    recursive: true
+    env: opts.env || process.env.NODE_ENV || defaultEnv,
+    recursive: true,
+    force: true
   });
 }
 
