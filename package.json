@@ -34,6 +34,7 @@
     "defaults": "^1.0.2",
     "glob-cp": "^1.0.4",
     "glob-ln": "^1.0.5",
+    "minimist": "^1.2.0",
     "path-is-absolute": "^1.0.0"
   },
   "devDependencies": {

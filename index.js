@@ -8,14 +8,19 @@ if (!module.parent) {
 
   program
     .version(require('./package.json').version)
-    .option('-s, --src [value]', 'source path')
-    .option('-d, --dest [value]', 'destination path')
-    .option('-e, --env [value]', 'environment: "production" or "development", default: "production"')
-    .option('-f, --force [value]', 'remove destination before operation, default: "true"')
-    .option('-r, --recursive [value]', 'recursive copy, default: "true"')
+    .usage('[options] ["<src>" "<dest>"]')
+    .description('Please use quotes when providing \'<src>\' and \'<dest>\'');
+
+  program
+    .option('-s, --src [value]', 'source path (don\'t forget to put it in quotes)')
+    .option('-d, --dest [value]', 'destination path (don\'t forget to put it in quotes)')
+    .option('-e, --env [value]', 'environment: "prod[uction]" or "dev[elopment]", default: "production"')
+    .option('-f, --force', 'remove destination before the operation')
+    .option('-r, --recursive', 'recursive copy')
     .parse(process.argv);
 
   var opts = program.opts();
+  opts._ = require('minimist')(process.argv.slice(2))._;
   opts.parent = 'cmd';
 
   return command.sync(opts);

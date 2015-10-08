@@ -53,13 +53,23 @@ module.exports.sync = function(opts) {
  * private helper functions
  */
 function setOptions(opts) {
-  return defaults(opts, {
-    src: 'node_modules/:module/public',
-    dest: 'public/:module',
-    env: opts.env || process.env.NODE_ENV || defaultEnv,
-    recursive: true,
-    force: true
-  });
+  opts = opts || {};
+
+  if ((!opts.src || !opts.dest) && opts._.length < 2) {
+    var msg = 'please let me know your "src" and "dest" path. \n--> run "assets-bundler -h" for more info.';
+    console.error(msg);
+    if (opts.parent === 'cmd') process.exit(1);
+  }
+
+  if (!opts.src && opts._.length >= 2) opts.src = opts._[0];
+  if (!opts.dest && opts._.length >= 2) opts.dest = opts._[1];
+
+  opts.env = opts.env || process.env.NODE_ENV || defaultEnv;
+  if (opts.env === 'dev') opts.env = 'development';
+  if (opts.env === 'prod') opts.env = 'production';
+
+  debug('options', opts);
+  return opts;
 }
 
 function fixPaths(opts) {
@@ -75,7 +85,4 @@ function fixPaths(opts) {
     debug('no absolute path provided, ' + description + ' set to: ' + absolute);
     return absolute;
   }
-
 }
-
-
